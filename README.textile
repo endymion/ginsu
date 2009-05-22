@@ -45,7 +45,7 @@ Now when you run:
 	
 ...Ginsu will find the header in your static/index.html file and create a partial in app/views/_header.html.erb with the contents of the HTML element that it locates using your CSS or xpath selector.
 
-Using this technique does not require your graphic designer to make any changes to the Dreamweaver project.  You don't have to tag the section that you want to slice out, you simply describe where it's located and Ginsu will find it and slice it out.
+Using this technique does not require your graphic designer to make any changes to the Dreamweaver project.  You don't have to tag the section that you want to slice out, you simply describe where it's located and Ginsu will find it and slice it out.  You bring your graphic designers into the agile process by enabling them to update parts of the web site with their tools, without learning Rails.
 
 h2. Installation
 
