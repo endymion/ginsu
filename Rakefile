@@ -21,3 +21,20 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_files.include('README')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gemspec|
+    gemspec.name = 'ginsu'
+    gemspec.summary = 'A Ruby on Rails plugin for carving partials out of static web sites.'
+    gemspec.email = 'rap@endymion.com'
+    # gemspec.homepage = "http://github.com/technicalpickles/the-perfect-gem"
+    gemspec.description = <<-EOF
+Ginsu is a Ruby on Rails plugin for carving partials out of static web sites, for including
+graphic designers in the agile process for developing a web project.
+EOF
+    gemspec.authors = ["Ryan Porter"]
+  end
+rescue LoadError
+  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
+end

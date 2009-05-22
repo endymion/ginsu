@@ -45,10 +45,10 @@ h2. Installation
 
 Install the Ginsu gem in your Rails application by adding this to your config/environment.rb:
 
-    config.gem "endymion-origami",
-      :lib     => 'origami',
+    config.gem "endymion-ginsu",
+      :lib     => 'ginsu',
       :source  => 'http://gems.github.com',
-      :version => '>=0.1.0'
+      :version => '>=0.0.0'
 
 Make sure that you have the gem:
 
