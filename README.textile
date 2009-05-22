@@ -23,6 +23,8 @@ Copy your static web into your Rails application's new "static" directory.  If y
 
 Configure Ginsu to slice sections of pages from the static web site into partial templates in your Rails application by adding slicing instructions to your config/initializers/ginsu.rb:
 
+<pre>
+<code>
 # Create a 'header' partial by plucking header HTML from static/index.html using a CSS selector.
 slice :css => 'h3.r a.l', :static => 'index.html', :partial => 'header'
 
@@ -32,6 +34,8 @@ slice :xpath => '//h3/a[@class="l"]', :static => 'index.html', :partial => 'head
 # Just use the 'search' parameter to use either CSS or xpath.
 slice :search => 'h3.r a.l', :static => 'index.html', :partial => 'header'
 slice :search => '//h3/a[@class="m"]', :static => 'index.html', :partial => 'header'
+</pre>
+</code>
 
 Now when you run:
 
@@ -64,7 +68,7 @@ Optionally, you can vendor the gem:
 
 h2. Configure
 
-Whenever you 
+The Ginsu configuration is in the initializer file config/initializers/ginsu.rb:
 
 h2. Features
 
