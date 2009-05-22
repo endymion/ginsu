@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
      "README.textile",
      "Rakefile",
      "VERSION",
+     "ginsu.gemspec",
      "init.rb",
      "install.rb",
      "lib/ginsu.rb",
