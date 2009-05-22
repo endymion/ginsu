@@ -8,22 +8,25 @@ module Ginsu
   class Config
     @@ATTRIBUTES = [
       :source,
+      :slices,
+      :links
     ]
     attr_accessor *@@ATTRIBUTES
-    
-  end
 
-  def initialize(params = {})
-    params.each do |key,val|
-      self.send("#{key}=", val) if self.respond_to? key
+    def initialize(params = {})
+      params.each do |key,val|
+        self.send("#{key}=", val) if self.respond_to? key
+      end
+      self.send(:init) if self.respond_to? :init
     end
-    self.send(:init) if self.respond_to? :init
+    
   end
 
   class Knife
     @@defaults = { 
-      :source => 'site',
-      :slices => []
+      :source => 'static',
+      :slices => [],
+      :links => []
     }
     @@config = Ginsu::Config.new(@@defaults)
 

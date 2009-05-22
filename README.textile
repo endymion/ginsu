@@ -31,7 +31,13 @@ configure.slices << { slice :xpath => '//h3/a[@class="l"]', :static => 'index.ht
 
 # Just use the 'search' parameter to use either CSS or xpath.
 configure.slices << { :search => 'h3.r a.l', :static => 'index.html', :partial => 'header' }
-configure.slices << { :search => '//h3/a[@class="m"]', :static => 'index.html', :partial => 'header' }</pre></code>
+configure.slices << { :search => '//h3/a[@class="m"]', :static => 'index.html', :partial => 'header' }
+
+# Create symbolic links in the public/ directory of the Rails app for selected sections and files.
+configure.links << { :static => 'galleries' }
+configure.links << { :static => 'events' }
+configure.links << { :static => 'holdout.html' }
+</pre></code>
 
 Now when you run:
 
