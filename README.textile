@@ -31,15 +31,21 @@ configure.slices << { slice :xpath => '//h3/a[@class="l"]', :static => 'index.ht
 
 # Just use the 'search' parameter to use either CSS or xpath.
 configure.slices << { :search => 'h3.r a.l', :static => 'index.html', :partial => 'header' }
-configure.slices << { :search => '//h3/a[@class="m"]', :static => 'index.html', :partial => 'header' }</pre></code>
+configure.slices << { :search => '//h3/a[@class="m"]', :static => 'index.html', :partial => 'header' }
+
+# Create symbolic links in the public/ directory of the Rails app for selected sections and files.
+configure.links << { :static => 'galleries' }
+configure.links << { :static => 'events' }
+configure.links << { :static => 'holdout.html' }
+</pre></code>
 
 Now when you run:
 
-	rake ginsu:update
+	rake ginsu:slice
 	
 ...Ginsu will find the header in your static/index.html file and create a partial in app/views/_header.html.erb with the contents of the HTML element that it locates using your CSS or xpath selector.
 
-Using this technique does not require your graphic designer to make any changes to the Dreamweaver project.  You don't have to tag the section that you want to slice out, you simply describe where it's located and Ginsu will find it and slice it out.
+Using this technique does not require your graphic designer to make any changes to the Dreamweaver project.  You don't have to tag the section that you want to slice out, you simply describe where it's located and Ginsu will find it and slice it out.  You bring your graphic designers into the agile process by enabling them to update parts of the web site with their tools, without learning Rails.
 
 h2. Installation
 
@@ -54,9 +60,9 @@ Make sure that you have the gem:
 
     rake gems:install
 
-Create your initializer, for configuring Ginsu:
+Generate your initializer, for configuring Ginsu:
 
-	rake ginsu:setup
+	script/generate ginsu
 
 Optionally, you can vendor the gem:
 
