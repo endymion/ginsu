@@ -16,8 +16,8 @@ You need a way to bring your graphic designer into the agile process, so that yo
 
 h2. The Solution
 
-	cd yourapp
-	mkdir static
+<pre></code>cd yourapp
+mkdir static</code></pre>
 
 Copy your static web into your Rails application's new "static" directory.  If your static web site has a root index file called "index.html", then your Rails app should have a file called "static/index.html".
 
@@ -41,7 +41,7 @@ configure.links << { :static => 'holdout.html' }
 
 Now when you run:
 
-	rake ginsu:slice
+<pre></code>rake ginsu:slice</code></pre>
 	
 ...Ginsu will find the header in your static/index.html file and create a partial in app/views/_header.html.erb with the contents of the HTML element that it locates using your CSS or xpath selector.
 
@@ -51,11 +51,11 @@ h2. Installation
 
 Install the Ginsu gem in your Rails application with:
 
-	script/plugin install git://github.com/endymion/ginsu.git
+<pre></code>script/plugin install git://github.com/endymion/ginsu.git</code></pre>
 
 Generate your initializer, for configuring Ginsu:
 
-	script/generate ginsu
+<pre></code>script/generate ginsu</code></pre>
 
 h2. Configure
 
