@@ -6,7 +6,6 @@ module Ginsu
   # Can override the following configuration options:
   # * <tt>source</tt> - the source directory of the static web site.  Defaults to 'static'.
   class Config
-    include ClassUtilMixin
     @@ATTRIBUTES = [
       :source,
     ]
