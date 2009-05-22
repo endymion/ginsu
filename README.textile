@@ -16,16 +16,14 @@ You need a way to bring your graphic designer into the agile process, so that yo
 
 h2. The Solution
 
-cd yourapp
-mkdir static
+	cd yourapp
+	mkdir static
 
 Copy your static web into your Rails application's new "static" directory.  If your static web site has a root index file called "index.html", then your Rails app should have a file called "static/index.html".
 
 Configure Ginsu to slice sections of pages from the static web site into partial templates in your Rails application by adding slicing instructions to your config/initializers/ginsu.rb:
 
-<pre>
-<code>
-# Create a 'header' partial by plucking header HTML from static/index.html using a CSS selector.
+<pre><code># Create a 'header' partial by plucking header HTML from static/index.html using a CSS selector.
 slice :css => 'h3.r a.l', :static => 'index.html', :partial => 'header'
 
 # Create a 'header' partial by plucking header HTML from static/index.html using an xpath selector.
@@ -33,9 +31,7 @@ slice :xpath => '//h3/a[@class="l"]', :static => 'index.html', :partial => 'head
 
 # Just use the 'search' parameter to use either CSS or xpath.
 slice :search => 'h3.r a.l', :static => 'index.html', :partial => 'header'
-slice :search => '//h3/a[@class="m"]', :static => 'index.html', :partial => 'header'
-</pre>
-</code>
+slice :search => '//h3/a[@class="m"]', :static => 'index.html', :partial => 'header'</pre></code>
 
 Now when you run:
 
