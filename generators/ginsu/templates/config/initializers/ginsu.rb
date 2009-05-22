@@ -1,15 +1,15 @@
 require 'ginsu'
-Ginsu::Knife.configure do |configure|
+Ginsu::Knife.configure do |ginsu|
 
 	# The default location of the static web site is 'site', but maybe your static
 	# site includes 150 MB worth of Photoshop .psd files and you don't want those
 	# in your Capistrano deployments.  Change the source path here if you want.
-  # config.source = '/home/webproject/site'
+  # ginsu.source = '/home/webproject/site'
 
-  # config.slices << { :search => '#header', :static => 'index.html', :partial => 'header' }
-  # config.slices << { :search => '#footer', :static => 'index.html', :partial => 'footer' }
+  # ginsu.slices << { :search => '#header', :static => 'index.html', :partial => 'header' }
+  # ginsu.slices << { :search => '#footer', :static => 'index.html', :partial => 'footer' }
 
-  # config.links << { :static => 'galleries' }
-  # config.links << { :static => 'news' }
+  # ginsu.links << { :static => 'galleries' }
+  # ginsu.links << { :static => 'news' }
 
 end

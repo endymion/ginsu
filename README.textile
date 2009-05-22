@@ -19,24 +19,24 @@ h2. The Solution
 <pre></code>cd yourapp
 mkdir static</code></pre>
 
-Copy your static web into your Rails application's new "static" directory.  If your static web site has a root index file called "index.html", then your Rails app should have a file called "static/index.html".
+Copy your static web site from your graphic designer into your Rails application's new "static" directory.  If your static web site has a root index file called "index.html", then your Rails app should have a file called "static/index.html".
 
 Configure Ginsu to slice sections of pages from the static web site into partial templates in your Rails application by adding slicing instructions to your config/initializers/ginsu.rb:
 
 <pre><code># Create a 'header' partial by plucking header HTML from static/index.html using a CSS selector.
-configure.slices << { :css => 'h3.r a.l', :static => 'index.html', :partial => 'header' }
+ginsu.slices << { :css => 'h3.r a.l', :static => 'index.html', :partial => 'header' }
 
 # Create a 'header' partial by plucking header HTML from static/index.html using an xpath selector.
-configure.slices << { slice :xpath => '//h3/a[@class="l"]', :static => 'index.html', :partial => 'header' }
+ginsu.slices << { slice :xpath => '//h3/a[@class="l"]', :static => 'index.html', :partial => 'header' }
 
 # Just use the 'search' parameter to use either CSS or xpath.
-configure.slices << { :search => 'h3.r a.l', :static => 'index.html', :partial => 'header' }
-configure.slices << { :search => '//h3/a[@class="m"]', :static => 'index.html', :partial => 'header' }
+ginsu.slices << { :search => 'h3.r a.l', :static => 'index.html', :partial => 'header' }
+ginsu.slices << { :search => '//h3/a[@class="m"]', :static => 'index.html', :partial => 'header' }
 
 # Create symbolic links in the public/ directory of the Rails app for selected sections and files.
-configure.links << { :static => 'galleries' }
-configure.links << { :static => 'events' }
-configure.links << { :static => 'holdout.html' }
+ginsu.links << { :static => 'galleries' }
+ginsu.links << { :static => 'events' }
+ginsu.links << { :static => 'holdout.html' }
 </pre></code>
 
 Now when you run:
@@ -62,18 +62,18 @@ h2. Configure
 The Ginsu configuration is in the initializer file config/initializers/ginsu.rb:
 
 <pre><code>require 'ginsu'
-Ginsu::Knife.configure do |configure|
+Ginsu::Knife.configure do |ginsu|
 
 	# The default location of the static web site is 'site', but maybe your static
 	# site includes 150 MB worth of Photoshop .psd files and you don't want those
 	# in your Capistrano deployments.  Change the source path here if you want.
-	config.source = '/home/webproject/site'
+	ginsu.source = '/home/webproject/site'
 
-	config.slices << { :search => '#header', :static => 'index.html', :partial => 'header' }
-	config.slices << { :search => '#footer', :static => 'index.html', :partial => 'footer' }
+	ginsu.slices << { :search => '#header', :static => 'index.html', :partial => 'header' }
+	ginsu.slices << { :search => '#footer', :static => 'index.html', :partial => 'footer' }
 
-	config.links << { :static => 'galleries' }
-	config.links << { :static => 'news' }
+	ginsu.links << { :static => 'galleries' }
+	ginsu.links << { :static => 'news' }
 
 end</code></pre>
 
