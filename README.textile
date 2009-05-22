@@ -49,24 +49,13 @@ Using this technique does not require your graphic designer to make any changes 
 
 h2. Installation
 
-Install the Ginsu gem in your Rails application by adding this to your config/environment.rb:
+Install the Ginsu gem in your Rails application with:
 
-    config.gem "endymion-ginsu",
-      :lib     => 'ginsu',
-      :source  => 'http://gems.github.com',
-      :version => '>=0.1.0'
-
-Make sure that you have the gem:
-
-    rake gems:install
+	script/plugin install git://github.com/endymion/ginsu.git
 
 Generate your initializer, for configuring Ginsu:
 
 	script/generate ginsu
-
-Optionally, you can vendor the gem:
-
-    rake gems:unpack
 
 h2. Configure
 
