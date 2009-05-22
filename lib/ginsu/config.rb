@@ -16,7 +16,7 @@ module Ginsu
 
   class Knife
     @@defaults = { 
-      :source => 'site'
+      :source => 'site',
       :slices => []
     }
     @@config = Ginsu::Config.new(@@defaults)
