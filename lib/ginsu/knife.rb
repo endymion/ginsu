@@ -33,7 +33,7 @@ module Ginsu
         
         # Drop that found string into the appropriate partial.
         partial_filename = slice[:partial]
-        partial_filename = '_' + partial_filename unless partial_filename =~ /^[^\_]/
+        partial_filename = '_' + partial_filename unless partial_filename =~ /^[\_]/
         partial_filename += '.html.erb' unless partial_filename =~ /\./
         partial_filename = File.join('app/views/', partial_filename)
         puts "Sliced partial '#{partial_filename}' from static '#{static_source_path}'."
