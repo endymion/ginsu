@@ -1,7 +1,7 @@
-class GinsuGenerator < Rails::Generator::NamedBase
+class GinsuGenerator < Rails::Generator::Base
   def manifest
     record do |m|
-      m.template 'config/initializers/ginsu.rb'
+      m.template 'config/initializers/ginsu.rb', 'config/initializers/ginsu.rb'
     end
   end
 end
