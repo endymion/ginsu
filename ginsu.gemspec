@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ginsu}
-  s.version = "0.0.0"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ryan Porter"]
@@ -10,17 +10,24 @@ Gem::Specification.new do |s|
   s.description = %q{Ginsu is a Ruby on Rails plugin for carving partials out of static web sites, for including graphic designers in the agile process for developing a web project.}
   s.email = %q{rap@endymion.com}
   s.extra_rdoc_files = [
-    "README.textile"
+    "README",
+     "README.textile"
   ]
   s.files = [
     "MIT-LICENSE",
+     "README",
      "README.textile",
      "Rakefile",
      "VERSION",
+     "generators/ginsu/USAGE",
+     "generators/ginsu/ginsu_generator.rb",
+     "generators/ginsu/templates/config/initializers/ginsu.rb",
      "ginsu.gemspec",
      "init.rb",
      "install.rb",
      "lib/ginsu.rb",
+     "lib/ginsu/config.rb",
+     "lib/ginsu/knife.rb",
      "tasks/ginsu_tasks.rake",
      "test/ginsu_test.rb",
      "test/test_helper.rb",
