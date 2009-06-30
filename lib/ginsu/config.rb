@@ -9,6 +9,8 @@ module Ginsu
     @@ATTRIBUTES = [
       :source,
       :partials,
+      :pages,
+      :templates,
       :links
     ]
     attr_accessor *@@ATTRIBUTES
@@ -26,6 +28,8 @@ module Ginsu
     @@defaults = { 
       :source => 'static',
       :partials => [],
+      :pages => [],
+      :templates => [],
       :links => []
     }
     @@config = Ginsu::Config.new(@@defaults)
