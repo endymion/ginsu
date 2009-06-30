@@ -2,7 +2,7 @@ module Ginsu; end
 
 require('rubygems')
 
-require('nokogiri')
+require('hpricot')
 
 def require_local(suffix)
   require(File.expand_path(File.join(File.dirname(__FILE__), suffix)))

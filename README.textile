@@ -24,14 +24,14 @@ Copy your static web site from your graphic designer into your Rails application
 Configure Ginsu to slice sections of pages from the static web site into partial templates in your Rails application by adding slicing instructions to your config/initializers/ginsu.rb:
 
 <pre><code># Create a 'header' partial by plucking header HTML from static/index.html using a CSS selector.
-ginsu.slices << { :css => 'h3.r a.l', :static => 'index.html', :partial => 'header' }
+ginsu.partials << { :css => 'h3.r a.l', :static => 'index.html', :partial => 'header' }
 
 # Create a 'header' partial by plucking header HTML from static/index.html using an xpath selector.
-ginsu.slices << { slice :xpath => '//h3/a[@class="l"]', :static => 'index.html', :partial => 'header' }
+ginsu.partials << { partial :xpath => '//h3/a[@class="l"]', :static => 'index.html', :partial => 'header' }
 
 # Just use the 'search' parameter to use either CSS or xpath.
-ginsu.slices << { :search => 'h3.r a.l', :static => 'index.html', :partial => 'header' }
-ginsu.slices << { :search => '//h3/a[@class="m"]', :static => 'index.html', :partial => 'header' }
+ginsu.partials << { :search => 'h3.r a.l', :static => 'index.html', :partial => 'header' }
+ginsu.partials << { :search => '//h3/a[@class="m"]', :static => 'index.html', :partial => 'header' }
 
 # Create symbolic links in the public/ directory of the Rails app for selected sections and files.
 ginsu.links << { :static => 'galleries' }
@@ -69,8 +69,8 @@ Ginsu::Knife.configure do |ginsu|
 	# in your Capistrano deployments.  Change the source path here if you want.
 	ginsu.source = '/home/webproject/site'
 
-	ginsu.slices << { :search => '#header', :static => 'index.html', :partial => 'header' }
-	ginsu.slices << { :search => '#footer', :static => 'index.html', :partial => 'footer' }
+	ginsu.partials << { :search => '#header', :static => 'index.html', :partial => 'header' }
+	ginsu.partials << { :search => '#footer', :static => 'index.html', :partial => 'footer' }
 
 	ginsu.links << { :static => 'galleries' }
 	ginsu.links << { :static => 'news' }
@@ -79,9 +79,9 @@ end</code></pre>
 
 h2. Features
 
-h3. slice
+h3. partial
 
-A slice is the content of an HTML element that Ginsu will slice out of a static HTML document and drop into a Rails partial template.
+A partial is the content of an HTML element that Ginsu will partial out of a static HTML document and drop into a Rails partial template.
 
 h3. link
 

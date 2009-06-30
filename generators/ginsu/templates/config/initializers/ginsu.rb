@@ -6,8 +6,8 @@ Ginsu::Knife.configure do |ginsu|
 	# in your Capistrano deployments.  Change the source path here if you want.
   # ginsu.source = '/home/webproject/site'
 
-  # ginsu.slices << { :search => '#header', :static => 'index.html', :partial => 'header' }
-  # ginsu.slices << { :search => '#footer', :static => 'index.html', :partial => 'footer' }
+  # ginsu.partials << { :search => '#header', :static => 'index.html', :partial => 'header' }
+  # ginsu.partials << { :search => '#footer', :static => 'index.html', :partial => 'footer' }
 
   # ginsu.links << { :static => 'galleries' }
   # ginsu.links << { :static => 'news' }

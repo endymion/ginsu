@@ -1,39 +1,30 @@
-require 'nokogiri'
-
 module Ginsu
   class Knife
 
     def self.slice
-      @@config.slices.each do |slice|
+      @@config.partials.each do |partial|
         
-        puts "Each slice requires a :static parameter to specify the source file." if
-          slice[:static].blank?
-        puts "Each slice requires either a :search, :css or :xpath parameter with a search string." if
-          slice[:css].blank? and slice[:xpath].blank? and slice[:search].blank?
-        puts "Each slice requires a :partial parameter with the name of the destination template." if
-          slice[:partial].blank?
+        puts "Each partial requires a :static parameter to specify the source file." if
+          partial[:static].blank?
+        puts "Each partial requires a :search parameter with a search string." if
+          partial[:search].blank?
+        puts "Each partial requires a :partial parameter with the name of the destination template." if
+          partial[:partial].blank?
 
         # Open the static source HTML file.
         static_source_string = ''
-        static_source_path = File.join(@@config.source, slice[:static])
+        static_source_path = File.join(@@config.source, partial[:static])
         File.open(static_source_path, "r") { |f|
             static_source_string = f.read
         }
-        static_source = Nokogiri::HTML(static_source_string)
+        static_source = Hpricot(static_source_string)
 
-        # Use Nokogiri to slice out the desired element's content.
-        found = ''
-        if slice[:css]
-          found = static_source.css(slice[:css]).first
-        elsif slice[:xpath]
-          found = static_source.css(slice[:xpath]).first
-        else
-          found = static_source.search(slice[:search]).first
-        end
+        # Use Hpricot to partial out the desired element's content.
+        found = static_source.search(partial[:search]).first
         
         # Drop that found string into the appropriate partial.
-        partial_filename = slice[:partial]
-        partial_filename = '_' + partial_filename unless partial_filename =~ /^[\_]/
+        partial_filename = partial[:partial]
+        partial_filename.gsub!(/\/([^\_][^\/]+$)/) {|string| '/_' + $1 }
         partial_filename += '.html.erb' unless partial_filename =~ /\./
         partial_filename = File.join('app/views/', partial_filename)
         puts "Sliced partial '#{partial_filename}' from static '#{static_source_path}'."
@@ -53,10 +44,10 @@ module Ginsu
         destination = File.join('public', link[:static])
         
         puts "Linking '#{source}' to '#{destination}'."
-        FileUtils.ln_s source, destination, :force => true
+        FileUtils.ln_s source, destination, :force => true unless File.exists? destination
         
       end
     end
-  
+
   end
 end

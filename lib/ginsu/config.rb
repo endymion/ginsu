@@ -8,7 +8,7 @@ module Ginsu
   class Config
     @@ATTRIBUTES = [
       :source,
-      :slices,
+      :partials,
       :links
     ]
     attr_accessor *@@ATTRIBUTES
@@ -25,7 +25,7 @@ module Ginsu
   class Knife
     @@defaults = { 
       :source => 'static',
-      :slices => [],
+      :partials => [],
       :links => []
     }
     @@config = Ginsu::Config.new(@@defaults)
