@@ -34,12 +34,8 @@ module Ginsu
         }
         static_source = Hpricot(static_source_string)
 
-        if parameters and parameters[:partial]
-          # Use Hpricot to partial out the desired element's content.
-          found = static_source.search(file[:search]).first
-        else
-          found = static_source
-        end
+        # Use Hpricot to slice out the desired element.
+        found = static_source.search(file[:search]).first
 
         # Drop that found string into the appropriate partial.
         target_filename = file[:partial]
