@@ -51,11 +51,11 @@ h2. Installation
 
 Install the Ginsu gem in your Rails application with:
 
-<pre></code>script/plugin install git://github.com/endymion/ginsu.git</code></pre>
+<pre><code>script/plugin install git://github.com/endymion/ginsu.git</code></pre>
 
 Generate your initializer, for configuring Ginsu:
 
-<pre></code>script/generate ginsu</code></pre>
+<pre><code>script/generate ginsu</code></pre>
 
 h2. Configure
 
