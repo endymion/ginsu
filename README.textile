@@ -23,11 +23,14 @@ Copy your static web site from your graphic designer into your Rails application
 
 Configure Ginsu to slice sections of pages from the static web site into partial templates in your Rails application by adding slicing instructions to your config/initializers/ginsu.rb:
 
-<pre><code># Create a 'header' partial by plucking header HTML from static/index.html using a CSS selector.
-ginsu.partials << { :css => 'h3.r a.l', :static => 'index.html', :partial => 'header' }
+<pre><code># Use the index.html file as a Rails page
+ginsu.page << { :static => 'index.html', :page => 'index' }
+
+# Create a 'header' partial by plucking header HTML from static/index.html using a CSS selector.
+ginsu.partials << { :search => 'h3.r a.l', :static => 'index.html', :partial => 'header' }
 
 # Create a 'header' partial by plucking header HTML from static/index.html using an xpath selector.
-ginsu.partials << { partial :xpath => '//h3/a[@class="l"]', :static => 'index.html', :partial => 'header' }
+ginsu.partials << { :search => '//h3/a[@class="l"]', :static => 'index.html', :partial => 'header' }
 
 # Just use the 'search' parameter to use either CSS or xpath.
 ginsu.partials << { :search => 'h3.r a.l', :static => 'index.html', :partial => 'header' }
@@ -69,8 +72,8 @@ Ginsu::Knife.configure do |ginsu|
 	# in your Capistrano deployments.  Change the source path here if you want.
 	ginsu.source = '/home/webproject/site'
 
-  ginsu.pages << { :static => 'index.html', :page => 'index', :search => '#content' }
-  ginsu.pages << { :static => 'folder/index.html', :page => 'controller/index', :search => '#content' }
+  ginsu.pages << { :static => 'index.html', :page => 'index' }
+  ginsu.pages << { :static => 'folder/index.html', :page => 'controller/index' }
 
   ginsu.pages << { :static => 'page.html', :partial => 'page', :search => '#content',
   :do => Proc.new do |line|
