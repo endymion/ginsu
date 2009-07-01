@@ -41,7 +41,7 @@ ginsu.links << { :static => 'holdout.html' }
 
 Now when you run:
 
-<pre></code>rake ginsu:slice</code></pre>
+<pre><code>rake ginsu:slice</code></pre>
 	
 ...Ginsu will find the header in your static/index.html file and create a partial in app/views/_header.html.erb with the contents of the HTML element that it locates using your CSS or xpath selector.
 
