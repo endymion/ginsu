@@ -16,7 +16,7 @@ You need a way to bring your graphic designer into the agile process, so that yo
 
 h2. The Solution
 
-<pre></code>cd yourapp
+<pre><code>cd yourapp
 mkdir static</code></pre>
 
 Copy your static web site from your graphic designer into your Rails application's new "static" directory.  If your static web site has a root index file called "index.html", then your Rails app should have a file called "static/index.html".
