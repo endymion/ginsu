@@ -9,7 +9,7 @@ Ginsu::Knife.configure do |ginsu|
   # ginsu.pages << { :static => 'index.html', :page => 'index', :search => '#content' }
   # ginsu.pages << { :static => 'folder/index.html', :page => 'controller/index', :search => '#content' }
 
-  # ginsu.pages << { :static => 'index.html', :partial => 'index', :search => '#content',
+  # ginsu.pages << { :static => 'page.html', :partial => 'page', :search => '#content',
   # :do => Proc.new do |line|
   #   line.gsub(/(src|href|value)(\=[\'\"])\.\.\//) {|string| "#{$1}#{$2}/"}
   # end }
