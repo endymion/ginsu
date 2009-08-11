@@ -6,14 +6,6 @@ Ginsu::Knife.configure do |ginsu|
 	# want those in your Capistrano deployments.  Change the source path here if you want.
   # ginsu.source = '/home/webproject/site'
 
-  # ginsu.pages << { :static => 'index.html', :page => 'index', :search => '#content' }
-  # ginsu.pages << { :static => 'folder/index.html', :page => 'controller/index', :search => '#content' }
-
-  # ginsu.pages << { :static => 'page.html', :partial => 'page', :search => '#content',
-  # :do => Proc.new do |line|
-  #   line.gsub(/(src|href|value)(\=[\'\"])\.\.\//) {|string| "#{$1}#{$2}/"}
-  # end }
-
   # ginsu.partials << { :static => 'index.html', :partial => 'header', :search => '#header' }
   # ginsu.partials << { :static => 'index.html', :partial => 'footer', :search => '#footer' }
 
