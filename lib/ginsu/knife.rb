@@ -82,7 +82,7 @@ module Ginsu
         static_source = Hpricot(static_source_string)
 
         # Use Hpricot to replace the desired element.
-        static_source.at(file[:search]).swap (file[:replace])
+        static_source.at(file[:search]).swap(file[:replace])
         found = static_source.to_html
 
         # Drop that found string into the appropriate partial.
