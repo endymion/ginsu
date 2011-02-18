@@ -6,6 +6,7 @@ module Ginsu
       self.pages
       self.templates
       self.links
+      self.folders
     end
 
     def self.pages parameters=nil
@@ -110,6 +111,27 @@ module Ginsu
              link[:static].blank?
 
         FileUtils.ln_s source, destination, :force => true unless File.exists? destination
+        
+      end
+    end
+
+    def self.folders
+      @@config.folders.each do |folder|
+
+        source = File.join(FileUtils.pwd, @@config.source, folder[:static])
+        destination = File.join('public', folder[:static])
+
+        puts "Purging '#{destination}'..."
+
+        FileUtils.rm_rf destination
+        
+        puts "Recursively copying '#{source}' to '#{destination}'..."
+
+        puts "Each folder requires a :static parameter with the name of the static resource" +
+             "    to copy to the public/ directory in your Rails application." if
+             folder[:static].blank?
+
+        FileUtils.cp_r source, destination
         
       end
     end

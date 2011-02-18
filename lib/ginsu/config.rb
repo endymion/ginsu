@@ -11,7 +11,8 @@ module Ginsu
       :partials,
       :pages,
       :templates,
-      :links
+      :links,
+      :folders
     ]
     attr_accessor *@@ATTRIBUTES
 
@@ -30,7 +31,8 @@ module Ginsu
       :partials => [],
       :pages => [],
       :templates => [],
-      :links => []
+      :links => [],
+      :folders => []
     }
     @@config = Ginsu::Config.new(@@defaults)
 
