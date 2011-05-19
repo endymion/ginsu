@@ -38,6 +38,11 @@ module Ginsu
         # Use Hpricot to slice out the desired element.
         found = static_source.search(file[:search]).first
 
+        # Make sure that the target folder exists.
+        unless File.exists?(target_folder = File.join('app/views/', File.dirname(file[:partial])))
+          Dir.mkdir(target_folder)
+        end
+
         # Drop that found string into the appropriate partial.
         target_filename = file[:partial]
         puts "Slicing '#{target_filename}' from '#{static_source_path}'..."
@@ -84,7 +89,7 @@ module Ginsu
 
         # Use Hpricot to replace the desired element.
         static_source.at(file[:search]).swap(file[:replace])
-        found = static_source.to_html
+        found = static_source.to_original_html
 
         # Drop that found string into the appropriate partial.
         target_filename = file[:template]
