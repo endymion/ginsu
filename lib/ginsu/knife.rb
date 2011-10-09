@@ -24,16 +24,26 @@ module Ginsu
         # Open the static source HTML file.
         static_source_string = ''
         static_source_path = File.join(@@config.source, file[:static])
-        File.open(static_source_path, "r") { |f|
-          static_source_string = ''
-          # Run a proc on each line?
-          if file[:do]
-            f.each {|line| static_source_string << file[:do].call(line)}
+
+        begin
+          File.open(static_source_path, "r") { |f|
+            static_source_string = ''
+            # Run a proc on each line?
+            if file[:do]
+              f.each {|line| static_source_string << file[:do].call(line)}
+            else
+              static_source_string = f.read
+            end
+          }
+          static_source = Hpricot(static_source_string)
+        rescue SystemCallError
+          $stderr.print "IO failed: " + $!
+          if file[:optional]
+            next
           else
-            static_source_string = f.read
+            raise
           end
-        }
-        static_source = Hpricot(static_source_string)
+        end
 
         # Use Hpricot to slice out the desired element.
         found = static_source.search(file[:search]).first
